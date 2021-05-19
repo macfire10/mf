@@ -1,0 +1,51 @@
+diff --git a/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.es.js b/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.es.js
+index 6c4a9c8..8fb5d59 100644
+--- a/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.es.js
++++ b/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.es.js
+@@ -5,7 +5,7 @@ import immediate from 'immediate';
+ import { EventEmitter } from 'events';
+ import inherits from 'inherits';
+ import { createError, BAD_REQUEST, INVALID_ID, MISSING_ID, RESERVED_ID } from 'pouchdb-errors';
+-import uuidV4 from 'uuid';
++import { v4 } from 'uuid';
+ 
+ function isBinaryObject(object) {
+   return (typeof ArrayBuffer !== 'undefined' && object instanceof ArrayBuffer) ||
+@@ -800,9 +800,9 @@ function tryAndPut(db, doc, diffFun) {
+ }
+ 
+ function rev() {
+-  return uuidV4.v4().replace(/-/g, '').toLowerCase();
++  return v4().replace(/-/g, '').toLowerCase();
+ }
+ 
+-var uuid = uuidV4.v4;
++var uuid = v4;
+ 
+ export { adapterFun, assign$1 as assign, bulkGet as bulkGetShim, Changes as changesHandler, clone, defaultBackOff, explainError, filterChange, flatten, res$1 as functionName, guardedConsole, hasLocalStorage, invalidIdError, isChromeApp, isCordova, isRemote, listenerCount, immediate as nextTick, normalizeDesignDocFunctionName as normalizeDdocFunctionName, once, parseDesignDocFunctionName as parseDdocFunctionName, parseUri, pick, rev, scopeEval, toPromise, upsert, uuid };
+diff --git a/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.js b/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.js
+index b8cc5d7..dd22da3 100644
+--- a/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.js
++++ b/node_modules/pouchdb-ajax/node_modules/pouchdb-utils/lib/index-browser.js
+@@ -11,7 +11,7 @@ var immediate = _interopDefault(require('immediate'));
+ var events = require('events');
+ var inherits = _interopDefault(require('inherits'));
+ var pouchdbErrors = require('pouchdb-errors');
+-var uuidV4 = _interopDefault(require('uuid'));
++var uuid = _interopDefault(require('uuid'));
+ 
+ function isBinaryObject(object) {
+   return (typeof ArrayBuffer !== 'undefined' && object instanceof ArrayBuffer) ||
+@@ -806,10 +806,10 @@ function tryAndPut(db, doc, diffFun) {
+ }
+ 
+ function rev() {
+-  return uuidV4.v4().replace(/-/g, '').toLowerCase();
++  return uuid().replace(/-/g, '').toLowerCase();
+ }
+ 
+-var uuid = uuidV4.v4;
++var uuid = uuid;
+ 
+ exports.adapterFun = adapterFun;
+ exports.assign = assign$1;
